@@ -1,0 +1,18 @@
+.feather {
+  margin: 0 10px;
+}
+
+.feather:hover {
+  stroke: var(--font-color-highlight);
+  transition: 0.2s;
+}
+
+/* .react:hover {
+  stroke: var(--font-color-highlight);
+  color: var(--font-color-highlight);
+  transition: 0.2s;
+} */
+
+.react {
+  margin: 10px 0;
+}
