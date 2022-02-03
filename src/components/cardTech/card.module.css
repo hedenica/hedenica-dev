@@ -1,0 +1,66 @@
+.carousel {
+  cursor: grab;
+  overflow: hidden;
+
+  width: 600px;
+}
+
+.inner {
+  display: flex;
+}
+
+@media screen and (max-width: 480px) {
+  .carousel {
+    width: 300px;
+    margin-left: 50px;
+  }
+
+  .inner {
+    justify-content: flex-start;    
+  }
+}
+
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-width: 150px;
+  height: 150px;
+  background-color: #242625;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 8px;
+}
+
+.icon {
+  color: #525050;
+  stroke: #525050;
+  position: absolute;
+
+  bottom: 5px;
+  right: 85px;
+}
+
+.techName {
+  z-index: 1;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.tagContainer {
+  background-color: var(--font-color-highlight);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  z-index: 1;
+}
+
+.tag {
+  font-size: 13px;
+  text-align: center;
+}
