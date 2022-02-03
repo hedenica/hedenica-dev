@@ -1,0 +1,22 @@
+.navbar {
+  height: 70px;
+  padding: 40px 60px;
+  background-color: var(--bg-color-dark);
+  margin-bottom: -30px;
+}
+
+.logo {
+  font-size: 30px;
+  color: var(--font-color-light);
+  font-family: 'Bree Serif', serif;
+}
+
+.tag {
+  color: var(--font-color-highlight);
+}
+
+@media screen and (max-width: 1440px) {
+  .navbar {
+    padding: 20px 20px;
+  }
+}
