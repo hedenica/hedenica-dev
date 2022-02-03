@@ -1,0 +1,6 @@
+{
+  "https://framer.com/m/Toggle-B5iT.js@X94mtocAj5XithxLESme": { "resolved": "https://framerusercontent.com/modules/tKSXNtFwMfl95hERmdUR/X94mtocAj5XithxLESme/VYyyC5Rw4.js", "integrity": "sha512-g3YcyEr/BuWeLFYcA5YJfFwHUnRZgGmdPCrKb02Srh406e7TE2CdkTNhCZrL4aul+MUz5nO24Juzu75S3heaZQ==", "contentType": "text/javascript; charset=UTF-8" },
+  "https://framer.com/m/framer/randomID.js@^2.0.0": { "resolved": "https://framerusercontent.com/modules/9v9kZvfG4dVIvUGXWTUG/0XmuCxJqtgJLC9OHPU64/randomID.js", "integrity": "sha512-I+aLLdwOzklP4OSw18GaKkpPVOXMsJom4XsE1f7sHs6QAIRtiS0+u4KK+06kc4T24On08AaP54d6F3ZS5zhlNA==", "contentType": "text/javascript; charset=UTF-8" },
+  "https://framer.com/m/framer/useConstant.js@^1.0.0": { "resolved": "https://framerusercontent.com/modules/e6iTGMqgmkFJvN0mYhkr/KWXeR1JD2kMVZ95etjSs/useConstant.js", "integrity": "sha512-AWOENGlFPMLr/lWIIT5WyYDo8DWBJGywUpoDdSttgt2m0GZ/vm4xU5hI2eykze45HhprugVxpPjMFusU/FDpaA==", "contentType": "text/javascript; charset=UTF-8" },
+  "version": 1
+}
