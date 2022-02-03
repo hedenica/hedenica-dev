@@ -1,0 +1,41 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 60px 0;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.content {
+  color: var(--font-color-highlight);
+}
+
+.content::selection, .heart::selection{
+  color: white;
+  background-color: var(--font-color-highlight);
+}
+
+.heart {
+  display: flex;
+  margin: 0 10px;
+}
+
+@media screen and (max-width: 960px) {
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .wrapper {
+    margin: 20px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content {
+    font-size: 25px;
+  }
+}
