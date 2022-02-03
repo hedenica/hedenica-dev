@@ -1,0 +1,88 @@
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+.company a {
+  display: block;
+  margin-top: 20px;
+  color: var(--font-color-highlight);
+}
+
+.title {
+  margin: 20px 0;
+}
+
+.time {
+  display: block;
+  margin: 10px 0;
+}
+
+.description {
+  display: inline;
+  line-height: 30px;
+  text-align: justify;
+  max-width: 690px;
+}
+
+.project {
+  font-family: 'Bree Serif', serif;
+  font-size: 18px;
+  color: var(--font-color-highlight);
+  letter-spacing: 1px;
+}
+
+.zeCardContainer {
+ 
+}
+
+.zeCard {
+  width: 700px;
+  height: fit-content;
+}
+
+.zeCard[data-card="true"] {
+  max-height: fit-content;
+}
+
+.backgroundText {
+  font-size: 96px;
+  opacity: 0.04;
+  transform: rotate(270deg);
+  position: absolute;
+  top: 274px;
+  left: -161px;
+}
+
+.sasCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 550px;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 600px) {
+  .projects {
+    padding: 0 30px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .zeCard {
+    width: 300px;
+    max-height: fit-content;
+    margin-left: 50px;
+  }
+
+  .sasCard {
+    margin-left: 50px;
+  }
+
+  .backgroundText {
+    top: 400px;
+    left: -328px;
+  }
+}
