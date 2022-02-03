@@ -179,7 +179,7 @@ function Projects() {
           This company provides integrated solutions to private schools all over Brazil.
           During my time there I actively worked on 3 main projects.
         </p>
-        <div className={styles.zeCardContainer}>
+        <div className={styles.sasCardContainer}>
           <CardProject inView={inView} projects={sasProjects} className={styles.sasCard} />
         </div>
         <motion.h1
