@@ -1,0 +1,68 @@
+.container {
+  width: 300px;
+  max-height: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #242625;
+  position: relative;
+  margin: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    max-height: fit-content;
+  }
+}
+
+.container[data-card="true"] {
+  min-height: 520px;
+  max-height: fit-content;
+  border-top-width: 3px;
+  border-top-color: var(--font-color-highlight);
+  border-top-style: solid;
+}
+
+.number {
+  opacity: 0.4;
+  color: #525050;
+  font-size: 200px;
+  position: absolute;
+  top: -40px;
+  left: -2px;
+}
+
+.name {
+  margin-left: 30px;
+  position: relative;
+  color: var(--font-color-highlight);
+}
+
+.description {
+  margin-left: 30px;
+  position: relative;
+  min-height: 173px;
+}
+
+.responsibilities {
+  margin-left: 30px;
+  margin-bottom: 20px;
+  position: relative;
+  color: var(--font-color-highlight);
+}
+
+.item::first-letter {
+  color: var(--font-color-highlight);
+}
+
+@media screen and (max-width: 480px) {
+  /* .overlay {
+    z-index: 1;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    will-change: opacity;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -150px;
+  } */
+}
