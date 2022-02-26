@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 import styles from './card.module.css'
