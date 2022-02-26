@@ -8,3 +8,5 @@ module.exports = {
     'scope-case': [OFF],
   },
 }
+
+export {}
