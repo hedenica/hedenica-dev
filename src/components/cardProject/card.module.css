@@ -14,7 +14,7 @@
   }
 }
 
-.container[data-card="true"] {
+.container[data-card='true'] {
   min-height: 520px;
   max-height: fit-content;
   border-top-width: 3px;

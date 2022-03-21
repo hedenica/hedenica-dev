@@ -20,6 +20,7 @@
   margin-top: 20px;
 }
 
-.title::selection, .blockquote::selection {
+.title::selection,
+.blockquote::selection {
   background: var(--font-color-highlight);
 }

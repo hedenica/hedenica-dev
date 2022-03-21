@@ -31,14 +31,13 @@
   border-radius: 100%;
 }
 
-@media screen and (max-width: 480px ){
+@media screen and (max-width: 480px) {
   .photo {
     width: 200px;
     height: 200px;
     border-radius: 100px;
   }
 }
-
 
 .backgroundText {
   font-size: 96px;

@@ -13,7 +13,8 @@
   color: var(--font-color-highlight);
 }
 
-.content::selection, .heart::selection{
+.content::selection,
+.heart::selection {
   color: white;
   background-color: var(--font-color-highlight);
 }

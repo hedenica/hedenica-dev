@@ -40,7 +40,7 @@
   height: fit-content;
 }
 
-.zeCard[data-card="true"] {
+.zeCard[data-card='true'] {
   max-height: fit-content;
 }
 
