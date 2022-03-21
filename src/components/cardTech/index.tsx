@@ -10,17 +10,21 @@ type CardTechTypes = {
 }
 
 export const CardTech = ({ techs }: CardTechTypes) => {
-  const [width, setWidth] = useState(0);
   const carousel = useRef<HTMLDivElement>(null)
+  const innerCarousel = useRef<HTMLDivElement>(null)
+  const itemCarousel = useRef<HTMLDivElement>(null)
+  const [height, setHeight] = useState(0);
+  // const [isCardActive, setIsCardActive] = useState(true)
 
   useEffect(() => {
     if (carousel.current) {
-      setWidth(
-        carousel?.current?.scrollWidth 
-        - carousel?.current?.offsetWidth
+      setHeight(
+        carousel.current.scrollHeight
+        - carousel?.current?.offsetHeight
       )
-    }
+    }   
   },[])
+
 
   return (
     <motion.div 
@@ -28,16 +32,21 @@ export const CardTech = ({ techs }: CardTechTypes) => {
       className={styles.carousel}
       whileTap={{ cursor: 'grabbing' }}
     >
-      <motion.div 
-        drag="x"
-        dragConstraints={{ right: 0, left: -width }}
-        whileDrag={{ scale: 1.1 }}
+      <motion.div
+        ref={innerCarousel}
+        drag="y"
+        dragConstraints={{ bottom: 0, top: -height }}
         className={styles.inner}
       >
         {techs.map(tech => (
           tech.name.map((techName) => (
-            <motion.div key={techName} className={styles.item}>
-            <ReactIcon size="140" className={styles.icon} />
+            <motion.div
+              ref={itemCarousel}
+              key={techName}
+              className={styles.item}
+              data-card-active={true}
+            >
+            <ReactIcon size="100" className={styles.icon} />
               <h4 className={styles.techName}>
                 {techName}
               </h4>
