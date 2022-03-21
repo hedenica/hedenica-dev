@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
-import styles from './navbar.module.css';
+import styles from './navbar.module.css'
 
 function Navbar() {
   const logoVariants = {
@@ -14,13 +14,13 @@ function Navbar() {
       transition: {
         type: 'spring',
         stiffness: 100,
-      }
+      },
     },
   }
 
   const tagVariants = {
     initial: {
-      opacity: 0
+      opacity: 0,
     },
     animate: {
       opacity: 1,
@@ -28,33 +28,34 @@ function Navbar() {
         duration: 2,
         delay: 1,
         ease: 'easeInOut',
-      }
+      },
     },
   }
 
   return (
     <nav className={styles.navbar}>
-      <motion.h2 
-        variants={logoVariants} 
-        initial="initial" 
-        animate="animate" 
+      <motion.h2
+        variants={logoVariants}
+        initial="initial"
+        animate="animate"
         className={styles.logo}
       >
         <motion.span
-          variants={tagVariants} 
-          initial="initial" 
-          animate="animate" 
-          className={styles.tag}
-        >{'< '}
-        </motion.span>
-          hedênica
-        <motion.span
-          variants={tagVariants} 
-          initial="initial" 
+          variants={tagVariants}
+          initial="initial"
           animate="animate"
           className={styles.tag}
         >
-        {' />'}
+          {'< '}
+        </motion.span>
+        hedênica
+        <motion.span
+          variants={tagVariants}
+          initial="initial"
+          animate="animate"
+          className={styles.tag}
+        >
+          {' />'}
         </motion.span>
       </motion.h2>
     </nav>

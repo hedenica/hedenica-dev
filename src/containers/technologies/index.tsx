@@ -1,7 +1,7 @@
-import { useInView } from 'react-hook-inview';
+import { useInView } from 'react-hook-inview'
 import { motion } from 'framer-motion'
-import { CardTech } from '../../components/cardTech';
-import styles from './tech.module.css';
+import { CardTech } from '../../components/cardTech'
+import styles from './tech.module.css'
 
 function Technologies() {
   const [ref, inView] = useInView()
@@ -13,19 +13,19 @@ function Technologies() {
     },
     {
       tag: 'frameworks',
-      name: ['Next JS', 'Remix']
+      name: ['Next JS', 'Remix'],
     },
     {
       tag: 'libraries',
-      name: ['React JS', 'React Native']
+      name: ['React JS', 'React Native'],
     },
     {
       tag: 'styling',
-      name: ['Styled Components', 'CSS', 'CSS Modules', 'SASS']
+      name: ['Styled Components', 'CSS', 'CSS Modules', 'SASS'],
     },
     {
       tag: 'state management',
-      name: ['Context API', 'Redux']
+      name: ['Context API', 'Redux'],
     },
     {
       tag: 'data',
@@ -33,11 +33,11 @@ function Technologies() {
     },
     {
       tag: 'styling',
-      name: ['Styled Components', 'CSS', 'CSS Modules', 'SASS']
+      name: ['Styled Components', 'CSS', 'CSS Modules', 'SASS'],
     },
     {
       tag: 'state management',
-      name: ['Context API', 'Redux']
+      name: ['Context API', 'Redux'],
     },
     {
       tag: 'data',
@@ -50,11 +50,11 @@ function Technologies() {
     {
       tag: 'tooling',
       name: ['ES Lint', 'Husky', 'Prettier'],
-    }
+    },
   ]
 
   const techVariants = {
-    initial: { 
+    initial: {
       opacity: 0,
       y: 200,
     },
@@ -63,9 +63,9 @@ function Technologies() {
       y: 0,
       transition: {
         type: 'spring',
-        bounce: 0.5
-      }
-    }
+        bounce: 0.5,
+      },
+    },
   }
 
   const backgrountTextVariants = {
@@ -78,12 +78,12 @@ function Technologies() {
         type: 'tween',
         stiffness: 100,
         bounce: 0.5,
-      }
-    }
+      },
+    },
   }
 
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       className={styles.tech}
       variants={techVariants}
@@ -98,10 +98,10 @@ function Technologies() {
         <CardTech techs={techs} />
       </div>
 
-      <motion.h1 
+      <motion.h1
         className={styles.backgroundText}
         variants={backgrountTextVariants}
-        initial='initial'
+        initial="initial"
         animate={inView && 'animate'}
       >
         what i know

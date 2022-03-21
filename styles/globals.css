@@ -3,10 +3,10 @@
 
 :root {
   /* colors */
-  --bg-color-dark: #1B1B1B;
+  --bg-color-dark: #1b1b1b;
   --bg-color-light: #eee;
   --font-color-light: #eee;
-  --font-color-highlight: #FF2C55;
+  --font-color-highlight: #ff2c55;
   --font-color-dark: #1f1f1f;
 }
 
@@ -15,7 +15,6 @@
   margin: 0;
   padding: 0;
 }
-
 
 html,
 body {
@@ -32,7 +31,7 @@ body {
 body::-webkit-scrollbar-thumb {
   border-radius: 100px;
   background: var(--font-color-highlight);
-  border: 6px solid rgba(0,0,0,0.2);
+  border: 6px solid rgba(0, 0, 0, 0.2);
 }
 
 body::-webkit-scrollbar {
@@ -43,7 +42,6 @@ body::-webkit-scrollbar-track {
   background-color: var(--bg-color-dark);
   border-radius: 100px;
 }
-
 
 a {
   color: inherit;
@@ -62,27 +60,27 @@ h6 {
 }
 
 h1 {
-  font-size: 34px
+  font-size: 34px;
 }
 
 h2 {
-  font-size: 28px
+  font-size: 28px;
 }
 
 h3 {
-  font-size: 24px
+  font-size: 24px;
 }
 
 h4 {
-  font-size: 20px
+  font-size: 20px;
 }
 
 h5 {
-  font-size: 18px
+  font-size: 18px;
 }
 
 h6 {
-  font-size: 16px
+  font-size: 16px;
 }
 
 p {
@@ -101,7 +99,7 @@ h5 a,
 h6 a {
   color: var(--font-color-light);
   text-decoration: none;
-  opacity: 1
+  opacity: 1;
 }
 
 h1 a:hover,
@@ -110,7 +108,7 @@ h3 a:hover,
 h4 a:hover,
 h5 a:hover,
 h6 a:hover {
-  color: #E53279;
+  color: #e53279;
   transition: 0.3s;
 }
 
