@@ -6,7 +6,7 @@ import styles from './tech.module.css';
 function Technologies() {
   const [ref, inView] = useInView()
 
-  const techs1 = [
+  const techs = [
     {
       tag: 'language',
       name: ['Javascript', 'Typescript'],
@@ -19,9 +19,6 @@ function Technologies() {
       tag: 'libraries',
       name: ['React JS', 'React Native']
     },
-  ]
-
-  const techs2 = [
     {
       tag: 'styling',
       name: ['Styled Components', 'CSS', 'CSS Modules', 'SASS']
@@ -34,9 +31,18 @@ function Technologies() {
       tag: 'data',
       name: ['API Rest', 'GraphQL'],
     },
-  ]
-
-  const techs3 = [
+    {
+      tag: 'styling',
+      name: ['Styled Components', 'CSS', 'CSS Modules', 'SASS']
+    },
+    {
+      tag: 'state management',
+      name: ['Context API', 'Redux']
+    },
+    {
+      tag: 'data',
+      name: ['API Rest', 'GraphQL'],
+    },
     {
       tag: 'testing',
       name: ['Jest', 'React Testing Library'],
@@ -89,9 +95,7 @@ function Technologies() {
       </h1>
 
       <div className={styles.techContainer}>
-        <CardTech techs={techs1} />
-        <CardTech techs={techs2} />
-        <CardTech techs={techs3} />
+        <CardTech techs={techs} />
       </div>
 
       <motion.h1 
