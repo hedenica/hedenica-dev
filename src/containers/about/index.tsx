@@ -49,18 +49,10 @@ function About() {
           <span className="highlight">Get</span> to know me a little
         </h1>
         <p className={styles.description}>
-          When I fell in love with the whole Frontend ecosystem I found purpose
-          and meaning not only in my professional life but also in my personal
-          life.
-          <br />
-          I&apos;m always thinking about code, and reading about it. <br />
-          <br />
-          Academicaly speaking, I have a bachelor&apos;s degree in Business
-          Administration and also an MBA degree in Business Intelligence &
-          Analytics. <br />
+          I love to build beautiful stuff, I&apos;m always thinking about code and reading about it. <br />
           <br />
           To wrap it up, I work mostly with ReactJS, React Native, and a whole
-          lot of Javascript.
+          lot of Javascript/Typescript.
         </p>
       </div>
       <div className={styles.photo}>

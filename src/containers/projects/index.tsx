@@ -89,14 +89,14 @@ function Projects() {
       id: 1,
       name: 'Zé Delivery App',
       description: `a delivery app, my squad is responsible for the development 
-        of member get member features, acting as a growth assset, bringing new users to the platform.
-        We offer a discount cupom to current users that invite people to the app.
+        of member get member features, acting as a growth asset, bringing new users to the platform.
+        We offer a discount coupon to current users that invite people to the app.
         `,
       isOpen: false,
       responsibilities: [
         {
           id: 'item-1',
-          item: '◉ To choose wether or not to use libraries to help us develop features through MVPs or POC',
+          item: '◉ To choose whether or not to use libraries to help us develop features through MVPs or POC',
         },
         {
           id: 'item-2',
@@ -109,10 +109,6 @@ function Projects() {
         {
           id: 'item-4',
           item: '◉ Testing our features through unit tests, also am responsible for deploying our features',
-        },
-        {
-          id: 'item-5',
-          item: '◉ Actively engaged in the Frontend Chapter',
         },
       ],
     },
