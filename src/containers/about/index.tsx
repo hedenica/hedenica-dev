@@ -49,7 +49,8 @@ function About() {
           <span className="highlight">Get</span> to know me a little
         </h1>
         <p className={styles.description}>
-          I love to build beautiful stuff, I&apos;m always thinking about code and reading about it. <br />
+          I love to build beautiful stuff, I&apos;m always thinking about code
+          and reading about it. <br />
           <br />
           To wrap it up, I work mostly with ReactJS, React Native, and a whole
           lot of Javascript/Typescript.
