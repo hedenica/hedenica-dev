@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-content: center;
   margin: 60px 0;
+  padding: 0 80px;
 }
 
 .wrapper {
@@ -24,6 +25,10 @@
   margin: 0 10px;
 }
 
+.icons {
+   display: flex;
+}
+
 @media screen and (max-width: 960px) {
   .footer {
     flex-direction: column;
@@ -35,7 +40,10 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
+  .footer {
+    padding: 0 50px;
+  }
   .content {
     font-size: 25px;
   }

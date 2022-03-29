@@ -73,13 +73,13 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 475px) {
   .carousel {
     width: 280px;
     margin-left: 50px;
   }
 
   .item {
-    width: 250px;
+    width: 230px;
   }
 }
