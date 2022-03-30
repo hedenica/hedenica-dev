@@ -19,6 +19,7 @@
 }
 
 .techContainer {
+  position: relative;
   height: 600px;
 }
 
@@ -29,6 +30,23 @@
   position: absolute;
   top: 260px;
   left: -117px;
+}
+
+.arrowDown {
+  background-color: --var(--font-color-highlight);
+  animation: MoveUpDown 1s linear infinite;
+  position: absolute;
+  right: -45px;
+  top: 420px;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: 0;
+  }
+  50% {
+    top: 400px;
+  }
 }
 
 @media screen and (max-width: 600px) {

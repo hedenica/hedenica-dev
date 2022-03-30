@@ -3,6 +3,9 @@ import { motion } from 'framer-motion'
 import { CardTech } from '../../components/cardTech'
 import styles from './tech.module.css'
 
+import arrowDown from '../../../public/arrow_down_icon.svg'
+import Image from 'next/image'
+
 function Technologies() {
   const [ref, inView] = useInView()
 
@@ -96,6 +99,9 @@ function Technologies() {
 
       <div className={styles.techContainer}>
         <CardTech techs={techs} />
+        <div className={styles.arrowDown}>
+          <Image src={arrowDown} alt='arrow down' />
+        </div>
       </div>
 
       <motion.h1
