@@ -19,7 +19,7 @@ function Blog() {
     router.push('/blog')
   }
 
-  return latestPosts ? (
+  return latestPosts && latestPosts?.length > 0 ? (
     <div className={styles.blog}>
       <h1 className={styles.title}>
         <span className="highlight">Check</span> out my blog
