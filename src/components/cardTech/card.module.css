@@ -26,6 +26,8 @@
   width: 450px;
 
   opacity: 0.3;
+
+  transition: transform 250ms ease-in-out;
 }
 
 .item[data-card-active='true'] {

@@ -1,25 +1,44 @@
 import { useState, useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue } from 'framer-motion'
 import { ReactIcon } from '../icons'
 
 import styles from './card.module.css'
 
-type CardTechTypes = {
-  techs: { tag: string; name: string[] }[]
+type CardTechProps = {
+  techs: {
+    tag: string
+    tech: {
+      id: number
+      name: string
+    }[]
+  }[]
 }
 
-export const CardTech = ({ techs }: CardTechTypes) => {
+export const CardTech = ({ techs }: CardTechProps) => {
   const carousel = useRef<HTMLDivElement>(null)
   const innerCarousel = useRef<HTMLDivElement>(null)
   const itemCarousel = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
-  // const [isCardActive, setIsCardActive] = useState(true)
+  const [cardActiveIndex, setCardActiveIndex] = useState(1)
 
   useEffect(() => {
     if (carousel.current) {
       setHeight(carousel.current.scrollHeight - carousel?.current?.offsetHeight)
     }
   }, [])
+
+  const y = useMotionValue(0)
+
+  const DISTANE_HEIGHT_OFFSET = 130
+
+  useEffect(() => {
+    y.onChange(() => {
+      const activeIndex =
+        parseInt(String((y.get() / DISTANE_HEIGHT_OFFSET) * -1), 10) + 1
+
+      setCardActiveIndex(activeIndex)
+    })
+  }, [y])
 
   return (
     <motion.div
@@ -32,20 +51,21 @@ export const CardTech = ({ techs }: CardTechTypes) => {
         drag="y"
         dragConstraints={{ bottom: 0, top: -height }}
         className={styles.inner}
+        style={{ y }}
       >
-        {techs.map((tech) =>
-          tech.name.map((techName) => (
+        {techs.map((item) =>
+          item.tech.map(({ id, name }) => (
             <motion.div
               ref={itemCarousel}
-              key={techName}
+              key={id}
               className={styles.item}
-              data-card-active={true}
+              data-card-active={cardActiveIndex === id}
             >
               <ReactIcon size="100" className={styles.icon} />
-              <h4 className={styles.techName}>{techName}</h4>
+              <h4 className={styles.techName}>{name}</h4>
 
               <div className={styles.tagContainer}>
-                <p className={styles.tag}>{tech.tag}</p>
+                <p className={styles.tag}>{item.tag}</p>
               </div>
             </motion.div>
           ))
