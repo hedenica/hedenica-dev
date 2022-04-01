@@ -3,53 +3,71 @@ import { motion } from 'framer-motion'
 import { CardTech } from '../../components/cardTech'
 import styles from './tech.module.css'
 
+import arrowDown from '../../../public/arrow_down_icon.svg'
+import Image from 'next/image'
+
 function Technologies() {
   const [ref, inView] = useInView()
 
   const techs = [
     {
       tag: 'language',
-      name: ['Javascript', 'Typescript'],
+      tech: [
+        { id: 0, name: 'Javascript' },
+        { id: 1, name: 'Typescript' },
+      ],
     },
     {
       tag: 'frameworks',
-      name: ['Next JS', 'Remix'],
+      tech: [
+        { id: 2, name: 'Next JS' },
+        { id: 3, name: 'Remix' },
+      ],
     },
     {
       tag: 'libraries',
-      name: ['React JS', 'React Native'],
+      tech: [
+        { id: 4, name: 'React JS' },
+        { id: 5, name: 'React Native' },
+      ],
     },
     {
       tag: 'styling',
-      name: ['Styled Components', 'CSS', 'CSS Modules', 'SASS'],
+      tech: [
+        { id: 6, name: 'Styled Components' },
+        { id: 7, name: 'CSS' },
+        { id: 8, name: 'CSS Modules' },
+        { id: 9, name: 'SASS' },
+      ],
     },
     {
       tag: 'state management',
-      name: ['Context API', 'Redux'],
+      tech: [
+        { id: 10, name: 'Context API' },
+        { id: 11, name: 'Redux' },
+      ],
     },
     {
       tag: 'data',
-      name: ['API Rest', 'GraphQL'],
-    },
-    {
-      tag: 'styling',
-      name: ['Styled Components', 'CSS', 'CSS Modules', 'SASS'],
-    },
-    {
-      tag: 'state management',
-      name: ['Context API', 'Redux'],
-    },
-    {
-      tag: 'data',
-      name: ['API Rest', 'GraphQL'],
+      tech: [
+        { id: 12, name: 'API Rest' },
+        { id: 13, name: 'GraphQL' },
+      ],
     },
     {
       tag: 'testing',
-      name: ['Jest', 'React Testing Library'],
+      tech: [
+        { id: 14, name: 'Jest' },
+        { id: 15, name: 'React Testing Library' },
+      ],
     },
     {
       tag: 'tooling',
-      name: ['ES Lint', 'Husky', 'Prettier'],
+      tech: [
+        { id: 16, name: 'ES Lint' },
+        { id: 17, name: 'Husky' },
+        { id: 18, name: 'Prettier' },
+      ],
     },
   ]
 
@@ -96,6 +114,9 @@ function Technologies() {
 
       <div className={styles.techContainer}>
         <CardTech techs={techs} />
+        <div className={styles.arrowDown}>
+          <Image src={arrowDown} alt="arrow down" />
+        </div>
       </div>
 
       <motion.h1

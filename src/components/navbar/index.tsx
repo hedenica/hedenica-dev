@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 import styles from './navbar.module.css'
 
@@ -34,30 +35,32 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <motion.h2
-        variants={logoVariants}
-        initial="initial"
-        animate="animate"
-        className={styles.logo}
-      >
-        <motion.span
-          variants={tagVariants}
+      <Link href='/' passHref>
+        <motion.h2
+          variants={logoVariants}
           initial="initial"
           animate="animate"
-          className={styles.tag}
+          className={styles.logo}
         >
-          {'< '}
-        </motion.span>
-        hedênica
-        <motion.span
-          variants={tagVariants}
-          initial="initial"
-          animate="animate"
-          className={styles.tag}
-        >
-          {' />'}
-        </motion.span>
-      </motion.h2>
+            <motion.span
+              variants={tagVariants}
+              initial="initial"
+              animate="animate"
+              className={styles.tag}
+            >
+              {'< '}
+            </motion.span>
+            hedênica
+            <motion.span
+              variants={tagVariants}
+              initial="initial"
+              animate="animate"
+              className={styles.tag}
+            >
+              {' />'}
+            </motion.span>
+        </motion.h2>
+      </Link>
     </nav>
   )
 }

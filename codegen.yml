@@ -1,0 +1,12 @@
+overwrite: true
+schema: "https://api-sa-east-1.graphcms.com/v2/ckzscad4n02pb01zafme3cz97/master"
+documents: "src/graphql/**/*.graphql"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

@@ -1,0 +1,15 @@
+.posts {
+  max-width: 1200px;
+  min-height: 70vh;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+
+@media screen and (max-width: 475px) {
+  .posts {
+    margin: 30px auto;
+  }
+}

@@ -4,6 +4,7 @@ import About from '../src/containers/about'
 import Hero from '../src/containers/hero'
 import Projects from '../src/containers/projects'
 import Technologies from '../src/containers/technologies'
+import Blog from '../src/containers/blog'
 
 const Home: NextPage = () => {
   return (
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
         <About />
         <Technologies />
         <Projects />
+        <Blog />
       </main>
     </>
   )

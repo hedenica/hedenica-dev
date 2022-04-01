@@ -8,7 +8,7 @@ import { Github, LinkedIn, Instagram, Twitter } from '../icons'
 
 function Footer() {
   return (
-    <footer className={`${styles.footer} container`}>
+    <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <h1 className={styles.content}>made with</h1>
         <div className={styles.heart}>
@@ -16,7 +16,7 @@ function Footer() {
         </div>
         <h1 className={styles.content}>by hedênica</h1>
       </div>
-      <div>
+      <div className={styles.icons}>
         <a href="https://github.com/hedenica" target="_blank" rel="noreferrer">
           <Github />
         </a>
