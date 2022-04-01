@@ -1,21 +1,20 @@
-import Image from 'next/image';
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 import styles from './postCard.module.css'
 
 type PostProps = {
   post: {
-    title: string;
-    imageUrl: string;
-    href: string;
-    description: string | null | undefined;
+    title: string
+    imageUrl: string
+    href: string
+    description: string
     author: {
-      name: string;
-      imageUrl: string;
+      name: string
+      imageUrl: string
     }
-    date: string;
+    date: string
   }
 }
-
 
 export const PostCard = ({ post }: PostProps) => {
   return (
@@ -27,15 +26,11 @@ export const PostCard = ({ post }: PostProps) => {
             src={post.imageUrl}
             width={420}
             height={180}
-            alt='post image'
+            alt="post image"
           />
           <div className={styles.content}>
-            <h4 className={styles.title}>
-              {post.title}
-            </h4>
-            <p className={styles.description}>
-              {post.description}
-            </p>
+            <h4 className={styles.title}>{post.title}</h4>
+            <p className={styles.description}>{post.description}</p>
 
             <div className={styles.postInfo}>
               <Image
@@ -43,15 +38,11 @@ export const PostCard = ({ post }: PostProps) => {
                 src={post.author.imageUrl}
                 width={40}
                 height={40}
-                alt='author image'
+                alt="author image"
               />
               <div>
-                <h6 className={styles.author}>
-                  {post.author.name}
-                </h6>
-                <time className={styles.publishedDate}>
-                  {post.date}
-                </time>
+                <h6 className={styles.author}>{post.author.name}</h6>
+                <time className={styles.publishedDate}>{post.date}</time>
               </div>
             </div>
           </div>

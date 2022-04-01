@@ -31,12 +31,12 @@ function Blog() {
             key={post.slug}
             post={{
               title: post.title,
-              imageUrl: post.coverImage ? post.coverImage.url : '',
+              imageUrl: post.coverImage?.url ?? '',
               href: `blog/${post.slug}`,
-              description: post.excerpt,
+              description: post?.excerpt ?? '',
               author: {
-                name: post.author ? post.author.name : '',
-                imageUrl: post.author?.picture ? post.author.picture.url : '',
+                name: post.author?.name ?? '',
+                imageUrl: post.author?.picture?.url ?? '',
               },
               date: new Date(post.publishedAt).toDateString(),
             }}
