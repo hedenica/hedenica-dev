@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import { useInView } from 'react-hook-inview'
-import { motion } from 'framer-motion'
+import { motion, Variants, Transition } from 'framer-motion'
 import styles from './about.module.css'
 
-import denny from '../../../public/denny-foto.jpeg'
+import denny from '../../../public/denny.jpg'
 
 function About() {
   const [ref, inView] = useInView()
 
-  const aboutVariants = {
+  const aboutVariants: Variants = {
     initial: {
       opacity: 0,
       y: 200,
@@ -37,6 +37,19 @@ function About() {
     },
   }
 
+  const imageVariants: Variants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        delay: 1,
+      },
+    },
+  }
+
   return (
     <motion.div
       className={styles.about}
@@ -56,9 +69,14 @@ function About() {
           lot of Javascript/Typescript.
         </p>
       </div>
-      <div className={styles.photo}>
+      <motion.div
+        variants={imageVariants}
+        initial="initial"
+        animate={inView && 'animate'}
+        className={styles.photo}
+      >
         <Image src={denny} alt="hedênica" />
-      </div>
+      </motion.div>
       <motion.h1
         className={styles.backgroundText}
         variants={backgrountTextVariants}
