@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Hedênica | Portfolio</title>
+        <title>Hedênica | Frontend Engineer</title>
         <meta name="description" content="Welcome, make yourself at home" />
       </Head>
       <main>

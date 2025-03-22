@@ -4,7 +4,7 @@ import { ReactIcon } from '../icons'
 
 import styles from './card.module.css'
 
-type CardTechProps = {
+interface CardTechProps {
   techs: {
     tag: string
     tech: {
@@ -29,12 +29,12 @@ export const CardTech = ({ techs }: CardTechProps) => {
 
   const y = useMotionValue(0)
 
-  const DISTANE_HEIGHT_OFFSET = 130
+  const DISTANCE_HEIGHT_OFFSET = 130
 
   useEffect(() => {
     y.onChange(() => {
       const activeIndex =
-        parseInt(String((y.get() / DISTANE_HEIGHT_OFFSET) * -1), 10) + 1
+        parseInt(String((y.get() / DISTANCE_HEIGHT_OFFSET) * -1), 10) + 1
 
       setCardActiveIndex(activeIndex)
     })
@@ -50,6 +50,7 @@ export const CardTech = ({ techs }: CardTechProps) => {
         ref={innerCarousel}
         drag="y"
         dragConstraints={{ bottom: 0, top: -height }}
+        dragTransition={{ bounceStiffness: 200, bounceDamping: 20 }}
         className={styles.inner}
         style={{ y }}
       >

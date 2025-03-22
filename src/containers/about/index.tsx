@@ -1,11 +1,10 @@
-import Image from 'next/image'
 import { useInView } from 'react-hook-inview'
-import { motion, Variants, Transition } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import styles from './about.module.css'
 
-import denny from '../../../public/denny.jpg'
+import denny from '../../../public/denny.jpeg'
 
-function About() {
+const About = () => {
   const [ref, inView] = useInView()
 
   const aboutVariants: Variants = {
@@ -23,7 +22,7 @@ function About() {
     },
   }
 
-  const backgrountTextVariants = {
+  const backgroundTextVariants = {
     initial: {
       opacity: 0,
     },
@@ -62,24 +61,23 @@ function About() {
           <span className="highlight">Get</span> to know me a little
         </h1>
         <p className={styles.description}>
-          I love to build beautiful stuff, I&apos;m always thinking about code
-          and reading about it. <br />
-          <br />
-          To wrap it up, I work mostly with ReactJS, React Native, and a whole
-          lot of Javascript/Typescript.
+          I&apos;m a Frontend Software Engineer and Team Leader with experience
+          in building high-quality web and mobile applications. Skilled in
+          React, Next.js, React Native, and TypeScript, I focus on creating
+          scalable, user-centric solutions while leading and mentoring teams to
+          achieve their best.
         </p>
       </div>
-      <motion.div
+      <motion.img
+        src={denny.src}
         variants={imageVariants}
         initial="initial"
         animate={inView && 'animate'}
         className={styles.photo}
-      >
-        <Image src={denny} alt="hedênica" />
-      </motion.div>
+      />
       <motion.h1
         className={styles.backgroundText}
-        variants={backgrountTextVariants}
+        variants={backgroundTextVariants}
         initial="initial"
         animate={inView && 'animate'}
       >

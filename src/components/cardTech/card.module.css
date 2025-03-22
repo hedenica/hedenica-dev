@@ -1,9 +1,9 @@
 .carousel {
-  cursor: grab;
-  overflow: hidden;
-
   width: 500px;
   height: 450px;
+  cursor: grab;
+  overflow: hidden;
+  touch-action: pan-y;
 }
 
 .inner {
@@ -64,7 +64,7 @@
   text-align: center;
 }
 
-@media screen and (max-width: 780px) {
+@media (max-width: 780px) {
   .carousel {
     width: 325px;
     margin-left: 50px;
@@ -75,13 +75,24 @@
   }
 }
 
-@media screen and (max-width: 475px) {
+@media (max-width: 475px) {
   .carousel {
-    width: 280px;
-    margin-left: 50px;
+    width: 240px;
+    margin-left: 80px;
   }
 
   .item {
     width: 230px;
+  }
+}
+
+@media (max-width: 320px) {
+  .carousel {
+    width: 220px;
+    margin-left: 30px;
+  }
+
+  .item {
+    width: 200px;
   }
 }

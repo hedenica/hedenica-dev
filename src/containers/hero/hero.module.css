@@ -6,21 +6,40 @@
   height: 75vh;
 }
 
-.title {
-  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+.title, .description {
+  width: 100%;
+  font-size: 28px;
   color: var(--font-color-light);
-  margin-top: -70px;
+  margin-top: -20px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.description {
+  margin-top: 0;
 }
 
 .blockquote {
-  font-size: clamp(0.5rem, 1vw + 0.4rem, 1rem);
+  font-size: 12px;
   color: var(--font-color-light);
   letter-spacing: 2px;
   font-style: italic;
   margin-top: 20px;
+  text-align: center;
+  padding: 0 16px;
 }
 
 .title::selection,
 .blockquote::selection {
   background: var(--font-color-highlight);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 50px;
+  }
+
+  .blockquote {
+    font-size: 20px;
+  }
 }

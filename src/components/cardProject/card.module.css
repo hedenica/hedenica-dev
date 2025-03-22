@@ -8,6 +8,10 @@
   margin: 20px;
 }
 
+.container:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
   .container {
     max-height: fit-content;
@@ -38,9 +42,12 @@
 }
 
 .description {
-  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   position: relative;
-  min-height: 173px;
+  min-height: 160px;
 }
 
 .responsibilities {

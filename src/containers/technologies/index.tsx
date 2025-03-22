@@ -86,7 +86,7 @@ function Technologies() {
     },
   }
 
-  const backgrountTextVariants = {
+  const backgroundTextVariants = {
     initial: {
       opacity: 0,
     },
@@ -121,7 +121,7 @@ function Technologies() {
 
       <motion.h1
         className={styles.backgroundText}
-        variants={backgrountTextVariants}
+        variants={backgroundTextVariants}
         initial="initial"
         animate={inView && 'animate'}
       >

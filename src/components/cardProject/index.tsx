@@ -80,9 +80,9 @@ export const CardProject = ({ projects, inView, className }: CardTypes) => {
               <motion.div>
                 <h3 className={styles.responsibilities}>responsibilities</h3>
                 <ul>
-                  {card.responsibilities.map((responsability) => (
-                    <li key={responsability.id} className={styles.item}>
-                      {responsability.item}
+                  {card.responsibilities.map((responsibility) => (
+                    <li key={responsibility.id} className={styles.item}>
+                      {responsibility.item}
                     </li>
                   ))}
                 </ul>

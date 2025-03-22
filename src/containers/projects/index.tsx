@@ -29,7 +29,7 @@ function Projects() {
         },
         {
           id: 'item-4',
-          item: '◉ Worked with micro-frontends',
+          item: '◉ Worked with micro-frontend',
         },
       ],
     },
@@ -53,7 +53,7 @@ function Projects() {
         },
         {
           id: 'item-4',
-          item: '◉ Worked with micro-frontends',
+          item: '◉ Worked with micro-frontend',
         },
       ],
     },
@@ -78,7 +78,7 @@ function Projects() {
         },
         {
           id: 'item-4',
-          item: '◉ Worked with micro-frontends',
+          item: '◉ Worked with micro-frontend',
         },
       ],
     },
@@ -96,18 +96,14 @@ function Projects() {
       responsibilities: [
         {
           id: 'item-1',
-          item: '◉ To choose whether or not to use libraries to help us develop features through MVPs or POC',
-        },
-        {
-          id: 'item-2',
           item: '◉ Bring UI designs to life as realistically as possible',
         },
         {
-          id: 'item-3',
+          id: 'item-2',
           item: '◉ Implement events to track users interactions within the application (web and mobile app).',
         },
         {
-          id: 'item-4',
+          id: 'item-3',
           item: '◉ Testing our features through unit tests, also am responsible for deploying our features',
         },
       ],
@@ -129,7 +125,7 @@ function Projects() {
     },
   }
 
-  const backgrountTextVariants = {
+  const backgroundTextVariants = {
     initial: {
       opacity: 0,
     },
@@ -161,7 +157,7 @@ function Projects() {
       </h3>
       <span className={styles.time}>September, 2021 | Present </span>
       <p className={styles.description}>
-        Zé Delivery is the largest bevarage delivery app in the world, with over
+        Zé Delivery is the largest beverage delivery app in the world, with over
         44 billion orders in 2021.
       </p>
       <div className={styles.zeCardContainer}>
@@ -190,7 +186,7 @@ function Projects() {
       </div>
       <motion.h1
         className={styles.backgroundText}
-        variants={backgrountTextVariants}
+        variants={backgroundTextVariants}
         initial="initial"
         animate={inView && 'animate'}
       >

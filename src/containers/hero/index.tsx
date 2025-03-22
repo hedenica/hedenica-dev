@@ -31,31 +31,35 @@ const heroBlockquoteVariants = {
   },
 }
 
-function Hero() {
+const Hero = () => {
   return (
-    <>
-      <div className={styles.hero}>
-        <WaveEffect />
-        <motion.h1
-          variants={heroTitleVariants}
-          initial="initial"
-          animate="animate"
-          className={styles.title}
-        >
-          <span className="highlight">Howdy,</span> my name is Hedênica
-          <br />
-          and I&apos;m a frontend engineer
-        </motion.h1>
-        <motion.blockquote
-          variants={heroBlockquoteVariants}
-          initial="initial"
-          animate="animate"
-          className={styles.blockquote}
-        >
-          &quot;with great power comes great responsibility&quot;
-        </motion.blockquote>
-      </div>
-    </>
+    <div className={styles.hero}>
+      <WaveEffect />
+      <motion.h1
+        variants={heroTitleVariants}
+        initial="initial"
+        animate="animate"
+        className={styles.title}
+      >
+        <span className="highlight">Howdy,</span> my name is Hedênica
+      </motion.h1>
+      <motion.h1
+        variants={heroTitleVariants}
+        initial="initial"
+        animate="animate"
+        className={styles.description}
+      >
+        and I&apos;m a frontend engineer
+      </motion.h1>
+      <motion.blockquote
+        variants={heroBlockquoteVariants}
+        initial="initial"
+        animate="animate"
+        className={styles.blockquote}
+      >
+        &quot;with great power comes great responsibility&quot;
+      </motion.blockquote>
+    </div>
   )
 }
 
