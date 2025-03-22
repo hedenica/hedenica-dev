@@ -30,11 +30,7 @@ export const WaveEffect = () => {
   }
 
   return (
-    <div
-      style={{
-        width: '100%',
-      }}
-    >
+    <div style={{ width: '100%' }}>
       <motion.svg
         variants={svgVariants}
         initial="initial"
