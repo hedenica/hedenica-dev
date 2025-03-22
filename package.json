@@ -49,5 +49,8 @@
     "commitizen": {
       "path": "node_modules/cz-emoji-conventional"
     }
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
