@@ -7,7 +7,8 @@ import Footer from '../src/components/footer'
 
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function MyApp({ Component, pageProps }: AppProps & { pageProps: { apolloState: any } }) {
   if (pageProps.apolloState) {
     client.restore(pageProps.apolloState)
   }
