@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { motion, AnimatePresence, Variants } from 'framer-motion'
 
 import styles from './card.module.css'
 
@@ -33,13 +33,13 @@ export const CardProject = ({ projects, inView, className }: CardTypes) => {
     setCards(updatedList)
   }
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 1 } },
     exit: { opacity: 0, transition: { duration: 0.15 } },
   }
 
-  const numberVariants = {
+  const numberVariants: Variants = {
     initial: {
       opacity: 0,
     },
@@ -53,7 +53,7 @@ export const CardProject = ({ projects, inView, className }: CardTypes) => {
   }
 
   return (
-    <AnimateSharedLayout>
+    <>
       {cards.map((card) => (
         <motion.div
           className={`${styles.container} ${
@@ -91,6 +91,6 @@ export const CardProject = ({ projects, inView, className }: CardTypes) => {
           </AnimatePresence>
         </motion.div>
       ))}
-    </AnimateSharedLayout>
+    </>
   )
 }

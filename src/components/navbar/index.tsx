@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import Link from 'next/link'
 
 import styles from './navbar.module.css'
 
 function Navbar() {
-  const logoVariants = {
+  const logoVariants: Variants = {
     initial: {
       opacity: 0,
       x: '-300px',
@@ -19,7 +19,7 @@ function Navbar() {
     },
   }
 
-  const tagVariants = {
+  const tagVariants: Variants = {
     initial: {
       opacity: 0,
     },
@@ -35,7 +35,7 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <Link href='/' passHref>
+      <Link href='/'>
         <motion.h2
           variants={logoVariants}
           initial="initial"

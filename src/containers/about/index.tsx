@@ -22,7 +22,7 @@ const About = () => {
     },
   }
 
-  const backgroundTextVariants = {
+  const backgroundTextVariants: Variants = {
     initial: {
       opacity: 0,
     },

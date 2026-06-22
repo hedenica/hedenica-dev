@@ -1,6 +1,6 @@
 import { useInView } from 'react-hook-inview'
 import { CardProject } from '../../components/cardProject'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 
 import styles from './projects.module.css'
 
@@ -110,7 +110,7 @@ function Projects() {
     },
   ]
 
-  const projectVariants = {
+  const projectVariants: Variants = {
     initial: {
       opacity: 1,
       y: 200,
@@ -125,7 +125,7 @@ function Projects() {
     },
   }
 
-  const backgroundTextVariants = {
+  const backgroundTextVariants: Variants = {
     initial: {
       opacity: 0,
     },

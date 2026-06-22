@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { WaveEffect } from '../../components/animations/wave'
 
 import styles from './hero.module.css'
 
-const heroTitleVariants = {
+const heroTitleVariants: Variants = {
   initial: {
     opacity: 0,
   },
@@ -17,7 +17,7 @@ const heroTitleVariants = {
   },
 }
 
-const heroBlockquoteVariants = {
+const heroBlockquoteVariants: Variants = {
   initial: {
     opacity: 0,
   },
