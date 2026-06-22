@@ -1,7 +1,7 @@
 import { ReactNode, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useGSAP } from '@gsap/react'
-import { registerGsap } from '../../lib/gsap'
+import { registerGsap, ScrollTrigger } from '../../lib/gsap'
 import { NavRail } from '../navRail'
 import { StatusBar } from '../statusBar'
 
@@ -19,6 +19,29 @@ const AppShell = ({ children }: AppShellProps) => {
   useGSAP(
     () => {
       registerGsap()
+
+      const hues: Record<string, string> = {
+        hero: '#ff2c55',
+        about: '#ff3d8b',
+        technologies: '#e0359b',
+        projects: '#ff2c55',
+        contact: '#ff2c55',
+      }
+
+      Object.entries(hues).forEach(([id, hue]) => {
+        const el = document.getElementById(id)
+        if (!el) return
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top center',
+          end: 'bottom center',
+          onToggle: (self) => {
+            if (self.isActive) {
+              document.documentElement.style.setProperty('--accent', hue)
+            }
+          },
+        })
+      })
     },
     { scope }
   )

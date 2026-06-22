@@ -26,9 +26,18 @@ const companies: Company[] = [
         description:
           'A delivery app; my squad owns the member-get-member features, acting as a growth asset that brings new users to the platform via referral discount coupons.',
         responsibilities: [
-          { id: 'ze-1', item: '◉ Bring UI designs to life as realistically as possible' },
-          { id: 'ze-2', item: '◉ Implement events to track user interactions (web and mobile app)' },
-          { id: 'ze-3', item: '◉ Test our features through unit tests and own feature deploys' },
+          {
+            id: 'ze-1',
+            item: '◉ Bring UI designs to life as realistically as possible',
+          },
+          {
+            id: 'ze-2',
+            item: '◉ Implement events to track user interactions (web and mobile app)',
+          },
+          {
+            id: 'ze-3',
+            item: '◉ Test our features through unit tests and own feature deploys',
+          },
         ],
       },
     ],
@@ -46,9 +55,18 @@ const companies: Company[] = [
         description:
           'Enables teachers and students to interact through chat and video, and to upload/download files of unlimited size.',
         responsibilities: [
-          { id: 'sas1-1', item: '◉ Decide with the team the best architecture for the project' },
-          { id: 'sas1-2', item: '◉ Bring UI designs to life as realistically as possible' },
-          { id: 'sas1-3', item: '◉ Started the testing culture in the company' },
+          {
+            id: 'sas1-1',
+            item: '◉ Decide with the team the best architecture for the project',
+          },
+          {
+            id: 'sas1-2',
+            item: '◉ Bring UI designs to life as realistically as possible',
+          },
+          {
+            id: 'sas1-3',
+            item: '◉ Started the testing culture in the company',
+          },
           { id: 'sas1-4', item: '◉ Worked with micro-frontends' },
         ],
       },
@@ -58,9 +76,18 @@ const companies: Company[] = [
         description:
           "Aimed to make the teacher's life easier, making it possible to plan materials online for different classes.",
         responsibilities: [
-          { id: 'sas2-1', item: '◉ Decide with the team the best architecture for the project' },
-          { id: 'sas2-2', item: '◉ Bring UI designs to life as realistically as possible' },
-          { id: 'sas2-3', item: '◉ Started the testing culture in the company' },
+          {
+            id: 'sas2-1',
+            item: '◉ Decide with the team the best architecture for the project',
+          },
+          {
+            id: 'sas2-2',
+            item: '◉ Bring UI designs to life as realistically as possible',
+          },
+          {
+            id: 'sas2-3',
+            item: '◉ Started the testing culture in the company',
+          },
           { id: 'sas2-4', item: '◉ Worked with micro-frontends' },
         ],
       },
@@ -70,9 +97,18 @@ const companies: Company[] = [
         description:
           'Aimed to make teaching more flexible — the teacher had the autonomy to change the entire content according to the rhythm of the class.',
         responsibilities: [
-          { id: 'sas3-1', item: '◉ Decide with the team the best architecture for the project' },
-          { id: 'sas3-2', item: '◉ Bring UI designs to life as realistically as possible' },
-          { id: 'sas3-3', item: '◉ Started the testing culture in the company' },
+          {
+            id: 'sas3-1',
+            item: '◉ Decide with the team the best architecture for the project',
+          },
+          {
+            id: 'sas3-2',
+            item: '◉ Bring UI designs to life as realistically as possible',
+          },
+          {
+            id: 'sas3-3',
+            item: '◉ Started the testing culture in the company',
+          },
           { id: 'sas3-4', item: '◉ Worked with micro-frontends' },
         ],
       },
@@ -112,7 +148,11 @@ function Projects() {
     { scope }
   )
 
-  let runningIndex = 1
+  // running start index for each company's numbered rows
+  const startIndices = companies.reduce<number[]>((acc, company, i) => {
+    acc.push(i === 0 ? 1 : acc[i - 1] + companies[i - 1].projects.length)
+    return acc
+  }, [])
 
   return (
     <div ref={scope} className="mt-24">
@@ -129,9 +169,8 @@ function Projects() {
         </h1>
 
         <div className="flex flex-col gap-12">
-          {companies.map((company) => {
-            const startIndex = runningIndex
-            runningIndex += company.projects.length
+          {companies.map((company, ci) => {
+            const startIndex = startIndices[ci]
             return (
               <div key={company.name}>
                 <a

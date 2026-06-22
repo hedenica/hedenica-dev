@@ -5,6 +5,13 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+/* registered so --accent transitions smoothly as a color */
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff2c55;
+}
+
 :root {
   --bg: #1b1b1b;
   --fg: #eee;
@@ -41,6 +48,14 @@ body {
   font-family: var(--font-body);
   line-height: 1.7;
   scroll-behavior: smooth;
+  transition: --accent 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    transition: none;
+    scroll-behavior: auto;
+  }
 }
 
 h1,

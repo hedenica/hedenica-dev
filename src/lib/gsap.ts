@@ -2,12 +2,15 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
-let registered = false
-
-export function registerGsap() {
-  if (registered || typeof window === 'undefined') return
+// Register on first client-side import, before any component effect runs.
+if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
-  registered = true
+}
+
+// Kept for explicit call sites (idempotent no-op after the import above).
+export function registerGsap() {
+  if (typeof window === 'undefined') return
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 }
 
 export { gsap, ScrollTrigger }
