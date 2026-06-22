@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 
 export const WaveEffect = () => {
-  const svgVariants = {
+  const svgVariants: Variants = {
     initial: {
       opacity: 0,
     },
@@ -14,7 +14,7 @@ export const WaveEffect = () => {
     },
   }
 
-  const pathVariants = {
+  const pathVariants: Variants = {
     initial: {
       pathLength: 0,
       pathOffset: 0,

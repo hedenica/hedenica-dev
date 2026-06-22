@@ -32,12 +32,14 @@ export const CardTech = ({ techs }: CardTechProps) => {
   const DISTANCE_HEIGHT_OFFSET = 130
 
   useEffect(() => {
-    y.onChange(() => {
+    const unsubscribe = y.on('change', () => {
       const activeIndex =
         parseInt(String((y.get() / DISTANCE_HEIGHT_OFFSET) * -1), 10) + 1
 
       setCardActiveIndex(activeIndex)
     })
+
+    return () => unsubscribe()
   }, [y])
 
   return (

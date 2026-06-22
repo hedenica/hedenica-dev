@@ -1,5 +1,5 @@
 import { useInView } from 'react-hook-inview'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { CardTech } from '../../components/cardTech'
 import styles from './tech.module.css'
 
@@ -71,7 +71,7 @@ function Technologies() {
     },
   ]
 
-  const techVariants = {
+  const techVariants: Variants = {
     initial: {
       opacity: 0,
       y: 200,
@@ -86,7 +86,7 @@ function Technologies() {
     },
   }
 
-  const backgroundTextVariants = {
+  const backgroundTextVariants: Variants = {
     initial: {
       opacity: 0,
     },
