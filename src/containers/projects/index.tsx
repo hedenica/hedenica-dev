@@ -1,198 +1,163 @@
-import { useInView } from 'react-hook-inview'
-import { CardProject } from '../../components/cardProject'
-import { motion, Variants } from 'framer-motion'
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import { gsap } from '../../lib/gsap'
+import { CardProject, type Project } from '../../components/cardProject'
+import { Window } from '../../components/window'
 
-import styles from './projects.module.css'
+type Company = {
+  name: string
+  href: string
+  time: string
+  description: string
+  projects: Project[]
+}
+
+const companies: Company[] = [
+  {
+    name: 'Zé Delivery | Anheuser-Busch InBev',
+    href: 'https://www.ze.delivery',
+    time: 'September, 2021 | Present',
+    description:
+      'Zé Delivery is the largest beverage delivery app in the world, with over 44 billion orders in 2021.',
+    projects: [
+      {
+        id: 1,
+        name: 'Zé Delivery App',
+        description:
+          'A delivery app; my squad owns the member-get-member features, acting as a growth asset that brings new users to the platform via referral discount coupons.',
+        responsibilities: [
+          { id: 'ze-1', item: '◉ Bring UI designs to life as realistically as possible' },
+          { id: 'ze-2', item: '◉ Implement events to track user interactions (web and mobile app)' },
+          { id: 'ze-3', item: '◉ Test our features through unit tests and own feature deploys' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'SAS Plataforma de Educação',
+    href: 'https://saseducacao.com.br/',
+    time: 'April, 2020 | September, 2021',
+    description:
+      'This company provides integrated solutions to private schools all over Brazil. During my time there I actively worked on 3 main projects.',
+    projects: [
+      {
+        id: 2,
+        name: 'Classroom',
+        description:
+          'Enables teachers and students to interact through chat and video, and to upload/download files of unlimited size.',
+        responsibilities: [
+          { id: 'sas1-1', item: '◉ Decide with the team the best architecture for the project' },
+          { id: 'sas1-2', item: '◉ Bring UI designs to life as realistically as possible' },
+          { id: 'sas1-3', item: '◉ Started the testing culture in the company' },
+          { id: 'sas1-4', item: '◉ Worked with micro-frontends' },
+        ],
+      },
+      {
+        id: 3,
+        name: 'Lesson Plan',
+        description:
+          "Aimed to make the teacher's life easier, making it possible to plan materials online for different classes.",
+        responsibilities: [
+          { id: 'sas2-1', item: '◉ Decide with the team the best architecture for the project' },
+          { id: 'sas2-2', item: '◉ Bring UI designs to life as realistically as possible' },
+          { id: 'sas2-3', item: '◉ Started the testing culture in the company' },
+          { id: 'sas2-4', item: '◉ Worked with micro-frontends' },
+        ],
+      },
+      {
+        id: 4,
+        name: 'SAS Adapt',
+        description:
+          'Aimed to make teaching more flexible — the teacher had the autonomy to change the entire content according to the rhythm of the class.',
+        responsibilities: [
+          { id: 'sas3-1', item: '◉ Decide with the team the best architecture for the project' },
+          { id: 'sas3-2', item: '◉ Bring UI designs to life as realistically as possible' },
+          { id: 'sas3-3', item: '◉ Started the testing culture in the company' },
+          { id: 'sas3-4', item: '◉ Worked with micro-frontends' },
+        ],
+      },
+    ],
+  },
+]
 
 function Projects() {
-  const [ref, inView] = useInView()
+  const scope = useRef<HTMLDivElement>(null)
 
-  const sasProjects = [
-    {
-      id: 1,
-      name: 'Classroom',
-      description:
-        'enables teachers and students to interact with each other through chat and video they can also upload and download files with unlimited sizes.',
-      isOpen: false,
-      responsibilities: [
-        {
-          id: 'item-1',
-          item: '◉ Decide with the team the best architecture for the project',
-        },
-        {
-          id: 'item-2',
-          item: '◉ Bring UI designs to life as realistically as possible',
-        },
-        {
-          id: 'item-3',
-          item: '◉ I started the testing culture into the company',
-        },
-        {
-          id: 'item-4',
-          item: '◉ Worked with micro-frontend',
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Lesson Plan',
-      description: `This project aimed to make the teacher's life easier, making it possible to plan materials online, for different classes.`,
-      isOpen: false,
-      responsibilities: [
-        {
-          id: 'item-1',
-          item: '◉ Decide with the team the best architecture for the project',
-        },
-        {
-          id: 'item-2',
-          item: '◉ Bring UI designs to life as realistically as possible',
-        },
-        {
-          id: 'item-3',
-          item: '◉ I started the testing culture into the company',
-        },
-        {
-          id: 'item-4',
-          item: '◉ Worked with micro-frontend',
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: 'SAS Adapt',
-      description:
-        'This project aimed to make teaching more flexible, the teacher had the autonomy to change the entire content according to the rhythm of the class.',
-      isOpen: false,
-      responsibilities: [
-        {
-          id: 'item-1',
-          item: '◉ Decide with the team the best architecture for the project',
-        },
-        {
-          id: 'item-2',
-          item: '◉ Bring UI designs to life as realistically as possible',
-        },
-        {
-          id: 'item-3',
-          item: '◉ I started the testing culture into the company',
-        },
-        {
-          id: 'item-4',
-          item: '◉ Worked with micro-frontend',
-        },
-      ],
-    },
-  ]
+  useGSAP(
+    () => {
+      const rows = gsap.utils.toArray<HTMLElement>('[data-work-row]')
 
-  const zeProjects = [
-    {
-      id: 1,
-      name: 'Zé Delivery App',
-      description: `a delivery app, my squad is responsible for the development 
-        of member get member features, acting as a growth asset, bringing new users to the platform.
-        We offer a discount coupon to current users that invite people to the app.
-        `,
-      isOpen: false,
-      responsibilities: [
+      gsap.matchMedia().add(
         {
-          id: 'item-1',
-          item: '◉ Bring UI designs to life as realistically as possible',
+          motion: '(prefers-reduced-motion: no-preference)',
+          reduced: '(prefers-reduced-motion: reduce)',
         },
-        {
-          id: 'item-2',
-          item: '◉ Implement events to track users interactions within the application (web and mobile app).',
-        },
-        {
-          id: 'item-3',
-          item: '◉ Testing our features through unit tests, also am responsible for deploying our features',
-        },
-      ],
+        (ctx) => {
+          const { motion } = ctx.conditions as { motion: boolean }
+          if (!motion) {
+            gsap.set(rows, { opacity: 1, y: 0 })
+            return
+          }
+          gsap.from(rows, {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            ease: 'power2.out',
+            stagger: 0.08,
+            scrollTrigger: { trigger: scope.current, start: 'top 70%' },
+          })
+        }
+      )
     },
-  ]
+    { scope }
+  )
 
-  const projectVariants: Variants = {
-    initial: {
-      opacity: 1,
-      y: 200,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        bounce: 0.5,
-      },
-    },
-  }
-
-  const backgroundTextVariants: Variants = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 0.05,
-      transition: {
-        type: 'tween',
-        stiffness: 100,
-        bounce: 0.5,
-      },
-    },
-  }
+  let runningIndex = 1
 
   return (
-    <motion.div
-      ref={ref}
-      className={styles.projects}
-      variants={projectVariants}
-      initial="initial"
-      animate={inView && 'animate'}
-    >
-      <h1 ref={ref} className={styles.title}>
-        <span className="highlight">Professional</span> projects
-      </h1>
-      <h3 className={styles.company}>
-        <a href="https://www.ze.delivery" target="_blank" rel="noreferrer">
-          Zé Delivery | Anheuser-Busch InBev
-        </a>
-      </h3>
-      <span className={styles.time}>September, 2021 | Present </span>
-      <p className={styles.description}>
-        Zé Delivery is the largest beverage delivery app in the world, with over
-        44 billion orders in 2021.
-      </p>
-      <div className={styles.zeCardContainer}>
-        <CardProject
-          inView={inView}
-          projects={zeProjects}
-          className={styles.zeCard}
-        />
-      </div>
-      <h3 ref={ref} className={styles.company}>
-        <a href="https://saseducacao.com.br/" target="_blank" rel="noreferrer">
-          SAS Plataforma de Educação
-        </a>
-      </h3>
-      <span className={styles.time}>April, 2020 | September, 2021 </span>
-      <p className={styles.description}>
-        This company provides integrated solutions to private schools all over
-        Brazil. During my time there I actively worked on 3 main projects.
-      </p>
-      <div className={styles.sasCardContainer}>
-        <CardProject
-          inView={inView}
-          projects={sasProjects}
-          className={styles.sasCard}
-        />
-      </div>
-      <motion.h1
-        className={styles.backgroundText}
-        variants={backgroundTextVariants}
-        initial="initial"
-        animate={inView && 'animate'}
-      >
-        what i&apos;ve done
-      </motion.h1>
-    </motion.div>
+    <div ref={scope} className="mt-24">
+      <Window id="projects" title="work" accentEdge className="relative">
+        <h1 className="mb-10 text-3xl sm:text-4xl">
+          <span className="highlight">Professional</span> projects
+        </h1>
+
+        <h1
+          aria-hidden
+          className="pointer-events-none absolute -bottom-6 right-2 select-none text-6xl text-fg opacity-[0.04] md:text-8xl"
+        >
+          what i&apos;ve done
+        </h1>
+
+        <div className="flex flex-col gap-12">
+          {companies.map((company) => {
+            const startIndex = runningIndex
+            runningIndex += company.projects.length
+            return (
+              <div key={company.name}>
+                <a
+                  href={company.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-display text-xl transition-colors hover:text-accent"
+                >
+                  {company.name}
+                </a>
+                <p className="mt-1 font-mono text-xs text-fg-muted">
+                  {company.time}
+                </p>
+                <p className="mt-3 mb-5 max-w-2xl text-sm text-fg-muted">
+                  {company.description}
+                </p>
+                <CardProject
+                  projects={company.projects}
+                  startIndex={startIndex}
+                />
+              </div>
+            )
+          })}
+        </div>
+      </Window>
+    </div>
   )
 }
 
