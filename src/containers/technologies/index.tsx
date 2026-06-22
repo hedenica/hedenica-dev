@@ -1,133 +1,112 @@
-import { useInView } from 'react-hook-inview'
-import { motion, Variants } from 'framer-motion'
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import { gsap } from '../../lib/gsap'
 import { CardTech } from '../../components/cardTech'
-import styles from './tech.module.css'
+import { Window } from '../../components/window'
 
-import arrowDown from '../../../public/arrow_down_icon.svg'
-import Image from 'next/image'
+const techs = [
+  {
+    tag: 'language',
+    tech: [
+      { id: 0, name: 'Javascript' },
+      { id: 1, name: 'Typescript' },
+    ],
+  },
+  {
+    tag: 'frameworks',
+    tech: [
+      { id: 2, name: 'Next JS' },
+      { id: 3, name: 'Remix' },
+    ],
+  },
+  {
+    tag: 'libraries',
+    tech: [
+      { id: 4, name: 'React JS' },
+      { id: 5, name: 'React Native' },
+    ],
+  },
+  {
+    tag: 'styling',
+    tech: [
+      { id: 6, name: 'Styled Components' },
+      { id: 7, name: 'CSS' },
+      { id: 8, name: 'CSS Modules' },
+      { id: 9, name: 'Tailwind' },
+    ],
+  },
+  {
+    tag: 'state management',
+    tech: [
+      { id: 10, name: 'Context API' },
+      { id: 11, name: 'Redux' },
+    ],
+  },
+  {
+    tag: 'data',
+    tech: [
+      { id: 12, name: 'API Rest' },
+      { id: 13, name: 'GraphQL' },
+    ],
+  },
+  {
+    tag: 'testing',
+    tech: [
+      { id: 14, name: 'Jest' },
+      { id: 15, name: 'React Testing Library' },
+    ],
+  },
+  {
+    tag: 'tooling',
+    tech: [
+      { id: 16, name: 'ES Lint' },
+      { id: 17, name: 'Husky' },
+      { id: 18, name: 'Prettier' },
+    ],
+  },
+]
 
 function Technologies() {
-  const [ref, inView] = useInView()
+  const scope = useRef<HTMLDivElement>(null)
 
-  const techs = [
-    {
-      tag: 'language',
-      tech: [
-        { id: 0, name: 'Javascript' },
-        { id: 1, name: 'Typescript' },
-      ],
-    },
-    {
-      tag: 'frameworks',
-      tech: [
-        { id: 2, name: 'Next JS' },
-        { id: 3, name: 'Remix' },
-      ],
-    },
-    {
-      tag: 'libraries',
-      tech: [
-        { id: 4, name: 'React JS' },
-        { id: 5, name: 'React Native' },
-      ],
-    },
-    {
-      tag: 'styling',
-      tech: [
-        { id: 6, name: 'Styled Components' },
-        { id: 7, name: 'CSS' },
-        { id: 8, name: 'CSS Modules' },
-        { id: 9, name: 'SASS' },
-      ],
-    },
-    {
-      tag: 'state management',
-      tech: [
-        { id: 10, name: 'Context API' },
-        { id: 11, name: 'Redux' },
-      ],
-    },
-    {
-      tag: 'data',
-      tech: [
-        { id: 12, name: 'API Rest' },
-        { id: 13, name: 'GraphQL' },
-      ],
-    },
-    {
-      tag: 'testing',
-      tech: [
-        { id: 14, name: 'Jest' },
-        { id: 15, name: 'React Testing Library' },
-      ],
-    },
-    {
-      tag: 'tooling',
-      tech: [
-        { id: 16, name: 'ES Lint' },
-        { id: 17, name: 'Husky' },
-        { id: 18, name: 'Prettier' },
-      ],
-    },
-  ]
+  useGSAP(
+    () => {
+      const chips = gsap.utils.toArray<HTMLElement>('[data-tech-chip]')
 
-  const techVariants: Variants = {
-    initial: {
-      opacity: 0,
-      y: 200,
+      gsap.matchMedia().add(
+        {
+          motion: '(prefers-reduced-motion: no-preference)',
+          reduced: '(prefers-reduced-motion: reduce)',
+        },
+        (ctx) => {
+          const { motion } = ctx.conditions as { motion: boolean }
+          if (!motion) {
+            gsap.set(chips, { opacity: 1, y: 0 })
+            return
+          }
+          gsap.from(chips, {
+            opacity: 0,
+            y: 16,
+            duration: 0.5,
+            ease: 'power2.out',
+            stagger: 0.03,
+            scrollTrigger: { trigger: scope.current, start: 'top 75%' },
+          })
+        }
+      )
     },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        bounce: 0.5,
-      },
-    },
-  }
-
-  const backgroundTextVariants: Variants = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 0.05,
-      transition: {
-        type: 'tween',
-        stiffness: 100,
-        bounce: 0.5,
-      },
-    },
-  }
+    { scope }
+  )
 
   return (
-    <motion.div
-      ref={ref}
-      className={styles.tech}
-      variants={techVariants}
-      initial="initial"
-      animate={inView && 'animate'}
-    >
-      <h1 className={styles.title}>
-        <span className="highlight">My</span> technologies
-      </h1>
-
-      <div className={styles.techContainer}>
+    <div ref={scope} className="mt-24">
+      <Window id="technologies" title="tech">
+        <h1 className="mb-8 text-3xl sm:text-4xl">
+          <span className="highlight">My</span> technologies
+        </h1>
         <CardTech techs={techs} />
-        <div className={styles.arrowDown}>
-          <Image src={arrowDown} alt="arrow down" />
-        </div>
-      </div>
-
-      <motion.h1
-        className={styles.backgroundText}
-        variants={backgroundTextVariants}
-        initial="initial"
-        animate={inView && 'animate'}
-      >
-        what i know
-      </motion.h1>
-    </motion.div>
+      </Window>
+    </div>
   )
 }
 
