@@ -1,96 +1,82 @@
 import { useState } from 'react'
-import { motion, AnimatePresence, Variants } from 'framer-motion'
 
-import styles from './card.module.css'
-
-type Responsibilities = {
+type Responsibility = {
   id: string
   item: string
 }
 
-type Projects = {
+export type Project = {
   id: number
   name: string
   description: string
-  isOpen: boolean
-  responsibilities: Responsibilities[]
+  responsibilities: Responsibility[]
 }
 
-type CardTypes = {
-  projects: Projects[]
-  inView: boolean
-  className?: string
+type CardProjectProps = {
+  projects: Project[]
+  startIndex?: number
 }
 
-export const CardProject = ({ projects, inView, className }: CardTypes) => {
-  const [cards, setCards] = useState(projects)
-
-  const handleExpandCard = (id: number) => {
-    const updatedList = cards.map((card) =>
-      card.id === id ? { ...card, isOpen: !card.isOpen } : card
-    )
-
-    setCards(updatedList)
-  }
-
-  const cardVariants: Variants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 1 } },
-    exit: { opacity: 0, transition: { duration: 0.15 } },
-  }
-
-  const numberVariants: Variants = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: 'easeInOut',
-      },
-    },
-  }
+export const CardProject = ({ projects, startIndex = 1 }: CardProjectProps) => {
+  const [openId, setOpenId] = useState<number | null>(null)
 
   return (
-    <>
-      {cards.map((card) => (
-        <motion.div
-          className={`${styles.container} ${
-            card.isOpen && styles.overlay
-          } ${className}`}
-          data-card={card.isOpen}
-          onClick={() => handleExpandCard(card.id)}
-          variants={cardVariants}
-          initial="initial"
-          animate={inView && 'animate'}
-          exit="exit"
-          whileHover={!card.isOpen ? { scale: 1.1 } : {}}
-          key={card.id}
-          layoutId={card.name}
-          layout
-        >
-          <motion.h1 className={styles.number} variants={numberVariants}>
-            {card.id}
-          </motion.h1>
-          <h1 className={styles.name}>{card.name}</h1>
-          <p className={styles.description}>{card.description}</p>
-          <AnimatePresence>
-            {card.isOpen && (
-              <motion.div>
-                <h3 className={styles.responsibilities}>responsibilities</h3>
-                <ul>
-                  {card.responsibilities.map((responsibility) => (
-                    <li key={responsibility.id} className={styles.item}>
-                      {responsibility.item}
-                    </li>
+    <div className="flex flex-col gap-3">
+      {projects.map((project, i) => {
+        const isOpen = openId === project.id
+        const num = String(startIndex + i).padStart(2, '0')
+
+        return (
+          <div
+            key={project.id}
+            data-work-row
+            className="glass overflow-hidden rounded-xl transition-transform duration-300 hover:-translate-y-0.5"
+          >
+            <button
+              type="button"
+              onClick={() => setOpenId(isOpen ? null : project.id)}
+              aria-expanded={isOpen}
+              className="flex w-full items-start gap-4 p-5 text-left"
+            >
+              <span className="font-mono text-sm text-accent">{num}</span>
+              <span className="flex-1">
+                <span className="block font-display text-xl sm:text-2xl">
+                  {project.name}
+                </span>
+                <span className="mt-1 block text-sm text-fg-muted">
+                  {project.description}
+                </span>
+              </span>
+              <span
+                aria-hidden
+                className={`font-mono text-fg-muted transition-transform duration-300 ${
+                  isOpen ? 'rotate-45' : ''
+                }`}
+              >
+                +
+              </span>
+            </button>
+
+            {/* expand via grid-rows trick — no layout jump */}
+            <div
+              className={`grid px-5 transition-[grid-template-rows] duration-300 ease-out ${
+                isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+              }`}
+            >
+              <div className="overflow-hidden">
+                <h3 className="pb-2 font-mono text-xs uppercase tracking-[0.2em] text-fg-muted">
+                  responsibilities
+                </h3>
+                <ul className="flex flex-col gap-1.5 pb-5 text-sm text-fg-muted">
+                  {project.responsibilities.map((r) => (
+                    <li key={r.id}>{r.item}</li>
                   ))}
                 </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      ))}
-    </>
+              </div>
+            </div>
+          </div>
+        )
+      })}
+    </div>
   )
 }

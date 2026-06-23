@@ -1,17 +1,14 @@
 import type { AppProps } from 'next/app'
 
-import Navbar from '../src/components/navbar'
-import Footer from '../src/components/footer'
+import AppShell from '../src/components/appShell'
 
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Navbar />
+    <AppShell>
       <Component {...pageProps} />
-      <Footer />
-    </>
+    </AppShell>
   )
 }
 
