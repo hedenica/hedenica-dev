@@ -35,15 +35,14 @@
   --font-body: 'Roboto', sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+html {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 0;
+  background-color: var(--bg);
 }
 
 html,
 body {
-  background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
   line-height: 1.7;
@@ -55,6 +54,7 @@ body {
   html {
     transition: none;
     scroll-behavior: auto;
+    scroll-snap-type: none;
   }
 }
 
@@ -101,15 +101,17 @@ body::-webkit-scrollbar-track {
 
 /* reusable glass surface */
 @utility glass {
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.07),
-    rgba(255, 255, 255, 0.02) 55%
-  );
+  background:
+    linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.015) 60%
+    ),
+    rgba(18, 18, 22, 0.55);
   border: 1px solid var(--surface-border);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(26px) saturate(140%);
+  -webkit-backdrop-filter: blur(26px) saturate(140%);
   box-shadow:
-    0 24px 70px -24px rgba(0, 0, 0, 0.75),
+    0 24px 70px -24px rgba(0, 0, 0, 0.8),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }

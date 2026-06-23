@@ -19,8 +19,11 @@ const Home: NextPage = () => {
       <Technologies />
       <Projects />
 
-      <div className="w-full">
-        <Window id="contact" title="contact" accentEdge>
+      <section
+        id="contact"
+        className="flex min-h-dvh w-full snap-center items-center justify-center px-4 py-16 md:pr-8 md:pl-24"
+      >
+        <Window title="contact">
           <h1 className="text-3xl sm:text-4xl">
             <span className="highlight">Let&apos;s</span> work together
           </h1>
@@ -38,7 +41,7 @@ const Home: NextPage = () => {
             <ArrowRight size={14} />
           </a>
         </Window>
-      </div>
+      </section>
     </>
   )
 }

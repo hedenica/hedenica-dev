@@ -1,13 +1,7 @@
 import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
-import { gsap, ScrollTrigger } from '../../lib/gsap'
-import {
-  HomeIcon,
-  UserIcon,
-  CodeIcon,
-  BriefcaseIcon,
-  MailIcon,
-} from '../icons'
+import { ScrollTrigger } from '../../lib/gsap'
+import { HomeIcon, UserIcon, CodeIcon, BriefcaseIcon, MailIcon } from '../icons'
 
 type NavItem = {
   id: string
@@ -34,11 +28,9 @@ export const NavRail = ({ onActiveChange }: NavRailProps) => {
 
   const goTo = (id: string) => {
     setMenuOpen(false)
-    gsap.to(window, {
-      duration: 0.8,
-      ease: 'power2.inOut',
-      scrollTo: { y: `#${id}`, offsetY: 80 },
-    })
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   useGSAP(
@@ -76,9 +68,7 @@ export const NavRail = ({ onActiveChange }: NavRailProps) => {
             aria-label={label}
             aria-current={active === id ? 'true' : undefined}
             className={`grid h-11 w-11 place-items-center rounded-lg transition-colors ${
-              active === id
-                ? 'text-accent'
-                : 'text-fg-muted hover:text-fg'
+              active === id ? 'text-accent' : 'text-fg-muted hover:text-fg'
             }`}
           >
             <Icon size={20} />
@@ -92,7 +82,7 @@ export const NavRail = ({ onActiveChange }: NavRailProps) => {
         onClick={() => setMenuOpen((o) => !o)}
         aria-label={menuOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={menuOpen}
-        className="glass fixed right-3 top-3 z-50 grid h-11 w-11 place-items-center rounded-lg text-fg md:hidden"
+        className="glass fixed top-1.5 right-2 z-50 grid h-9 w-9 place-items-center rounded-lg text-fg md:hidden"
       >
         <span className="font-mono text-lg leading-none">
           {menuOpen ? '✕' : '☰'}
@@ -114,9 +104,7 @@ export const NavRail = ({ onActiveChange }: NavRailProps) => {
                 active === id ? 'text-accent' : 'text-fg'
               }`}
             >
-              <span className="text-sm text-fg-muted">
-                0{i + 1}
-              </span>
+              <span className="text-sm text-fg-muted">0{i + 1}</span>
               {label}
             </button>
           ))}

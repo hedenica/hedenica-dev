@@ -1,11 +1,5 @@
 import { Clock } from '../clock'
-import {
-  Github,
-  LinkedIn,
-  Instagram,
-  Twitter,
-  ArrowRight,
-} from '../icons'
+import { Github, LinkedIn, Instagram, ArrowRight } from '../icons'
 
 type StatusBarProps = {
   activeLabel?: string
@@ -23,7 +17,6 @@ const socials = [
     label: 'Instagram',
     Icon: Instagram,
   },
-  { href: 'https://twitter.com/hedenica', label: 'Twitter', Icon: Twitter },
 ]
 
 export const StatusBar = ({ activeLabel = 'home' }: StatusBarProps) => (

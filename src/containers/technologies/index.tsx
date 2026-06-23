@@ -67,7 +67,7 @@ const techs = [
 ]
 
 function Technologies() {
-  const scope = useRef<HTMLDivElement>(null)
+  const scope = useRef<HTMLElement>(null)
 
   useGSAP(
     () => {
@@ -99,14 +99,25 @@ function Technologies() {
   )
 
   return (
-    <div ref={scope} className="w-full">
-      <Window id="technologies" title="tech">
+    <section
+      id="technologies"
+      ref={scope}
+      className="flex min-h-dvh w-full snap-center items-center justify-center px-4 py-16 md:pr-8 md:pl-24"
+    >
+      <Window title="tech" className="relative">
+        <h1
+          aria-hidden
+          data-parallax="8"
+          className="pointer-events-none absolute right-6 bottom-5 text-5xl text-fg opacity-[0.07] select-none md:text-7xl"
+        >
+          what i know
+        </h1>
         <h1 className="mb-8 text-3xl sm:text-4xl">
           <span className="highlight">My</span> technologies
         </h1>
         <CardTech techs={techs} />
       </Window>
-    </div>
+    </section>
   )
 }
 

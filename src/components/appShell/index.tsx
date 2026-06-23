@@ -4,6 +4,8 @@ import { useGSAP } from '@gsap/react'
 import { gsap, registerGsap, ScrollTrigger } from '../../lib/gsap'
 import { NavRail } from '../navRail'
 import { StatusBar } from '../statusBar'
+import { Swirl } from '../swirl'
+import { CursorGlow } from '../cursorGlow'
 
 const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
@@ -15,6 +17,7 @@ type AppShellProps = {
 const AppShell = ({ children }: AppShellProps) => {
   const [activeLabel, setActiveLabel] = useState('home')
   const scope = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
 
   useGSAP(
     () => {
@@ -43,7 +46,6 @@ const AppShell = ({ children }: AppShellProps) => {
         })
       })
 
-      // windows slide into focus
       gsap.matchMedia().add(
         {
           motion: '(prefers-reduced-motion: no-preference)',
@@ -52,20 +54,53 @@ const AppShell = ({ children }: AppShellProps) => {
         (ctx) => {
           const windows = gsap.utils.toArray<HTMLElement>('[data-window]')
           const { motion } = ctx.conditions as { motion: boolean }
+
           if (!motion) {
-            gsap.set(windows, { opacity: 1, y: 0, scale: 1 })
+            gsap.set(windows, { opacity: 1, y: 0, scale: 1, rotateX: 0 })
             return
           }
+
+          // windows fade + scale into focus as their section snaps in
+          // (no vertical shift — keeps them centered during the reveal)
           windows.forEach((el) => {
+            gsap.set(el, {
+              transformPerspective: 1200,
+              transformOrigin: 'center center',
+            })
             gsap.from(el, {
               opacity: 0,
-              y: 64,
-              scale: 0.97,
+              scale: 0.93,
+              rotateX: 6,
               duration: 0.9,
               ease: 'power3.out',
-              scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+              scrollTrigger: { trigger: el, start: 'top 60%', once: true },
             })
           })
+
+          // ghost words drift on scroll for depth
+          gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach((el) => {
+            const amount = Number(el.dataset.parallax) || 12
+            gsap.to(el, {
+              yPercent: amount,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+              },
+            })
+          })
+
+          // ambient life — drifting dot grid
+          if (gridRef.current) {
+            gsap.to(gridRef.current, {
+              backgroundPosition: '44px 44px',
+              duration: 6,
+              ease: 'none',
+              repeat: -1,
+            })
+          }
         }
       )
 
@@ -76,14 +111,19 @@ const AppShell = ({ children }: AppShellProps) => {
 
   return (
     <div ref={scope} className="relative min-h-dvh overflow-x-hidden">
-      {/* fixed accent glow */}
+      {/* swirling particle field */}
+      <Swirl />
+      {/* soft glow following the cursor */}
+      <CursorGlow />
+      {/* animated dot grid */}
       <div
+        ref={gridRef}
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10"
+        className="pointer-events-none fixed inset-0 -z-10 opacity-70"
         style={{
-          background:
-            'radial-gradient(55% 45% at 50% 18%, color-mix(in srgb, var(--accent) 40%, transparent), transparent 72%), radial-gradient(45% 40% at 80% 85%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%)',
-          transition: 'background 0.6s ease',
+          backgroundImage:
+            'radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)',
+          backgroundSize: '44px 44px',
         }}
       />
       {/* fixed grain overlay */}
@@ -94,7 +134,7 @@ const AppShell = ({ children }: AppShellProps) => {
       />
 
       {/* top title bar */}
-      <header className="glass fixed top-0 left-0 z-40 flex h-12 w-full items-center justify-center !rounded-none border-x-0 border-t-0 px-4">
+      <header className="glass fixed top-0 left-0 z-40 flex h-12 w-full items-center justify-center rounded-none! border-x-0 border-t-0 px-4">
         <Link href="/" aria-label="Home">
           <h2 className="font-display text-lg leading-none tracking-tight">
             <span className="text-accent">{'< '}</span>
@@ -104,7 +144,7 @@ const AppShell = ({ children }: AppShellProps) => {
         </Link>
         <span
           aria-hidden
-          className="absolute right-4 flex gap-2 font-mono text-xs text-fg-muted"
+          className="absolute right-4 hidden gap-2 font-mono text-xs text-fg-muted md:flex"
         >
           <span>–</span>
           <span>▢</span>
@@ -114,10 +154,8 @@ const AppShell = ({ children }: AppShellProps) => {
 
       <NavRail onActiveChange={setActiveLabel} />
 
-      {/* page content */}
-      <main className="relative flex flex-col items-center gap-20 px-4 pt-24 pb-28 sm:px-6 md:gap-28 md:pr-8 md:pl-24">
-        {children}
-      </main>
+      {/* page content — each child is a full-viewport snap panel */}
+      <main className="relative">{children}</main>
 
       <StatusBar activeLabel={activeLabel} />
     </div>

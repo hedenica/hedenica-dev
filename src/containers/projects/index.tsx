@@ -117,7 +117,7 @@ const companies: Company[] = [
 ]
 
 function Projects() {
-  const scope = useRef<HTMLDivElement>(null)
+  const scope = useRef<HTMLElement>(null)
 
   useGSAP(
     () => {
@@ -155,17 +155,14 @@ function Projects() {
   }, [])
 
   return (
-    <div ref={scope} className="w-full">
-      <Window id="projects" title="work" accentEdge>
+    <section
+      id="projects"
+      ref={scope}
+      className="flex min-h-dvh w-full snap-center items-center justify-center px-4 py-16 md:pr-8 md:pl-24"
+    >
+      <Window title="work">
         <h1 className="mb-10 text-3xl sm:text-4xl">
           <span className="highlight">Professional</span> projects
-        </h1>
-
-        <h1
-          aria-hidden
-          className="pointer-events-none absolute -bottom-6 right-2 select-none text-6xl text-fg opacity-[0.04] md:text-8xl"
-        >
-          what i&apos;ve done
         </h1>
 
         <div className="flex flex-col gap-12">
@@ -195,8 +192,15 @@ function Projects() {
             )
           })}
         </div>
+
+        <h1
+          aria-hidden
+          className="mt-14 text-right text-5xl text-fg opacity-[0.07] select-none md:text-7xl"
+        >
+          what i&apos;ve done
+        </h1>
       </Window>
-    </div>
+    </section>
   )
 }
 
