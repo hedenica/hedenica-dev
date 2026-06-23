@@ -60,8 +60,8 @@ const Hero = () => {
   )
 
   return (
-    <div ref={scope}>
-      <Window id="hero" title="home" accentEdge className="relative">
+    <div ref={scope} className="w-full">
+      <Window id="hero" title="home" accentEdge>
         {/* floating glyph decor */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           {glyphs.map((g) => (

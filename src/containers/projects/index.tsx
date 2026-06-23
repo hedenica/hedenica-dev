@@ -155,8 +155,8 @@ function Projects() {
   }, [])
 
   return (
-    <div ref={scope} className="mt-24">
-      <Window id="projects" title="work" accentEdge className="relative">
+    <div ref={scope} className="w-full">
+      <Window id="projects" title="work" accentEdge>
         <h1 className="mb-10 text-3xl sm:text-4xl">
           <span className="highlight">Professional</span> projects
         </h1>

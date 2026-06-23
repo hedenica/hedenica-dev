@@ -39,8 +39,8 @@ const About = () => {
   )
 
   return (
-    <div ref={scope} className="mt-24">
-      <Window id="about" title="about" className="relative">
+    <div ref={scope} className="w-full">
+      <Window id="about" title="about">
         {/* faint background word */}
         <h1
           aria-hidden

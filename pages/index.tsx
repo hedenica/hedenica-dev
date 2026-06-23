@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       <Technologies />
       <Projects />
 
-      <div className="mt-24">
+      <div className="w-full">
         <Window id="contact" title="contact" accentEdge>
           <h1 className="text-3xl sm:text-4xl">
             <span className="highlight">Let&apos;s</span> work together

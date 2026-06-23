@@ -99,7 +99,7 @@ function Technologies() {
   )
 
   return (
-    <div ref={scope} className="mt-24">
+    <div ref={scope} className="w-full">
       <Window id="technologies" title="tech">
         <h1 className="mb-8 text-3xl sm:text-4xl">
           <span className="highlight">My</span> technologies
